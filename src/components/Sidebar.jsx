@@ -11,23 +11,25 @@ const Sidebar = () => {
     <div className="h-screen w-60 bg-yellow-400 text-black fixed flex flex-col p-4">
       <nav className="flex flex-col gap-4">
         <Link
-          href="/home"
-          className={`p-2 rounded ${pathname === '/home' ? 'bg-gray-900 text-white' : 'hover:bg-gray-900 hover:text-white'}`}
+          href="/home_main"
+          className={`p-2 rounded ${pathname === '/home_main' ? 'bg-gray-900 text-white' : 'hover:bg-gray-900 hover:text-white'}`}
         >
           ホーム
         </Link>
         <Link
-          href="/mypage"
-          className={`p-2 rounded ${pathname === '/mypage' ? 'bg-gray-900 text-white' : 'hover:bg-gray-900 hover:text-white'}`}
+          href="/mypage_manager_top"
+          className={`p-2 rounded ${pathname === '/mypage_manager_top' || pathname === '/mypage_manager_ap' || pathname === '/mypage_manager_con' || pathname === '/mypage_manager_done' ? 'bg-gray-900 text-white' : 'text-black hover:bg-gray-900 hover:text-white'}`}
         >
           マイページ
         </Link>
+
         <Link
           href="/share"
-          className={`p-2 rounded ${pathname === '/share' ? 'bg-gray-900 text-white' : 'hover:bg-gray-900 hover:text-white'}`}
+          className={`p-2 rounded ${pathname === '/share' || pathname === '/share_gold' ? 'bg-gray-900 text-white' : 'hover:bg-gray-900 hover:text-white'}`}
         >
           資料を共有する
         </Link>
+
         <Link
           href="/ranking"
           className={`p-2 rounded ${pathname === '/ranking' ? 'bg-gray-900 text-white' : 'hover:bg-gray-900 hover:text-white'}`}

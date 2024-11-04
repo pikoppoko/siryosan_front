@@ -1,12 +1,26 @@
 "use client";
 
-import React from 'react';
-import Link from 'next/link'; 
+import React, { useState } from 'react';
+import Link from 'next/link';
 
 const YourUploadPage = () => {
+  const [isRegisterPopupVisible, setIsRegisterPopupVisible] = useState(false);
+  const [isApplicationPopupVisible, setIsApplicationPopupVisible] = useState(false);
+
+  // 登録ボタンを押したときの処理
+  const handleRegisterClick = () => {
+    setIsRegisterPopupVisible(true);
+    setTimeout(() => setIsRegisterPopupVisible(false), 3000); // 3秒後にポップアップを自動で非表示に
+  };
+
+  // 申請ボタンを押したときの処理
+  const handleApplicationClick = () => {
+    setIsApplicationPopupVisible(true);
+    setTimeout(() => setIsApplicationPopupVisible(false), 3000); // 3秒後にポップアップを自動で非表示に
+  };
 
   return (
-    <div className="flex flex-col p-4">
+    <div className="flex flex-col p-4 relative">
       {/* 最上部の共有ボタン */}
       <div className="flex justify-start mb-4">
         <button className="bg-pink-500 text-white p-2 rounded shadow hover:shadow-lg hover:bg-pink-600">
@@ -141,15 +155,40 @@ const YourUploadPage = () => {
 
         {/* 12段目 - ボタンを追加 */}
         <div className="flex justify-end mt-4">
-          <button className="bg-gray-400 text-gray-300 p-2 font-bold rounded shadow mr-2">
+          <button
+            className="bg-gray-400 text-gray-300 p-2 font-bold rounded shadow mr-2 hover:shadow-lg hover:bg-gray-500"
+            onClick={handleApplicationClick}
+          >
             申請
           </button>
-          <button className="bg-pink-500 text-white p-2 font-bold rounded shadow hover:shadow-lg hover:bg-pink-600">
+          <button
+            className="bg-pink-500 text-white p-2 font-bold rounded shadow hover:shadow-lg hover:bg-pink-600"
+            onClick={handleRegisterClick}
+          >
             登録
           </button>
         </div>
       </div>
-    </div>
+
+      {/* 登録完了ポップアップ */}
+      {isRegisterPopupVisible && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-gray-300 text-black p-4 rounded shadow-lg">
+            登録が完了しました！
+          </div>
+        </div>
+      )}
+
+      {/* 申請完了ポップアップ */}
+      {isApplicationPopupVisible && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-gray-300 text-black p-4 rounded shadow-lg">
+            申請が完了しました！
+          </div>
+        </div>
+      )}
+
+      </div>
   );
 };
 
